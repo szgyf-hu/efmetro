@@ -73,5 +73,23 @@ namespace WindowsFormsApplication1
         {
             refreshDataGrid();
         }
+
+        private void metroGrid1_DoubleClick(object sender, EventArgs e)
+        {
+            var srs = metroGrid1.SelectedRows;
+
+            if (srs.Count < 1)
+                return;
+
+            if (!(srs[0].DataBoundItem is Customers))
+                return;
+
+            Form3 f3 = 
+                new Form3(
+                    ((Customers)(srs[0].DataBoundItem))
+                        .CustomerID
+                    );
+            f3.ShowDialog();
+        }
     }
 }
